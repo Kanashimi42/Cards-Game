@@ -1,18 +1,31 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#game {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 колонки, каждая занимает равное пространство */
+    gap: 10px;
+    max-height: 80vh; /* Максимальная высота для контейнера игры */
+    overflow: auto; /* Скролл будет активирован при переполнении */
+}
+
 .card {
+    flex: 1; /* Растягиваем карточки, чтобы они занимали все доступное пространство внутри контейнера */
     width: 100px;
     height: 150px;
-    margin: 10px;
     border: 1px solid black;
-    display: inline-block;
-    background-color: #ccc;
-    text-align: center;
-    cursor: pointer;
-    font-size: 24px;
-    line-height: 150px;
+    position: relative;
     perspective: 1000px;
     transition: transform 0.5s;
     transform-style: preserve-3d;
 }
+
 .card.flipped {
     transform: rotateY(180deg);
 }
@@ -22,8 +35,58 @@
     height: 100%;
     position: absolute;
     backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+.front {
+    z-index: 2;
 }
 
 .back {
     transform: rotateY(180deg);
+    color: black;
+}
+
+#backgroundText {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+    border: 2px solid blue;
+    padding: 5px 10px;
+    background-color: white;
+    z-index: 10;
+}
+
+#livesText {
+    position: absolute;
+    top: 10px;
+    left: 150px;
+    font-size: 24px;
+    border: 2px solid blue;
+    padding: 5px 10px;
+    background-color: white;
+    z-index: 10;
+}
+
+
+#backToMenuBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px; /* Установите правильные отступы справа */
+    font-size: 18px;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+#backToMenuBtn:hover {
+    background-color: #0056b3;
 }
