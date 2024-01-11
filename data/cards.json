@@ -1,38 +1,38 @@
 [
   {
     "image": "../Contents/amethyst.png",
-    "name": "Amethyst"
+    "name": "amethyst"
   },
   {
     "image": "../Contents/brutal-helm.png",
-    "name": "Helm"
+    "name": "helm"
   },
   {
     "image": "../Contents/crossbow.png",
-    "name": "Crossbow"
+    "name": "crossbow"
   },
   {
     "image": "../Contents/d12.png",
-    "name": "D12"
+    "name": "d12"
   },
   {
     "image": "../Contents/dragon-head.png",
-    "name": "Dragon"
+    "name": "dragon"
   },
   {
     "image": "../Contents/flame.png",
-    "name": "Flame"
+    "name": "flame"
   },
   {
     "image": "../Contents/gladius.png",
-    "name": "Gladius"
+    "name": "gladius"
   },
   {
     "image": "../Contents/gold-bar.png",
-    "name": "Gold"
+    "name": "gold"
   },
   {
     "image": "../Contents/hang-glider.png",
-    "name": "HangGlider"
+    "name": "hangglider"
   }
 ]
