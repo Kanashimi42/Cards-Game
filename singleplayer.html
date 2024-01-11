@@ -1,26 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>One Player</title>
-</head>
-<body>
-    <div id="backgroundText">Score: 0</div>
-    <div id="livesText">Lives: 3</div>
-
-    <div id="game"></div>
-    <button id="backToMenuBtn">Обратно в меню</button>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="JS/one_player_mode.js"></script>
-
-<script>
-    document.getElementById("backToMenuBtn").addEventListener("click", function() {
-        window.location.href = "index.html";
-    });
-</script>
-
-</body>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Memory Card Game</title>
+    <link rel="stylesheet" href="css/style1.css">
+  </head>
+  <body>
+    <h1>Memory Cards</h1>
+    <div class="grid-container">
+    </div>
+    <p>Score: <span class="score"></span>  Health: <span class="health"></span></p>
+    <div class="actions">
+        <button onclick="restart()">Restart</button>
+        <button onclick="flipall()">Show Cards</button>
+        <button onclick="next()">Next Row</button>
+    </div>
+    <script src="JS/one_player_mode.js"></script>
+  </body>
 </html>

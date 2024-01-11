@@ -3,9 +3,10 @@ let cards = [];
 let firstCard, secondCard;
 let lockBoard = false;
 let score = 0;
+let health = 5;
 let listenscore = 0;
 document.querySelector(".score").textContent = score;
-
+document.querySelector(".health").textContent = health;
 fetch("./data/cards.json")
   .then((res) => res.json())
   .then((data) => {
@@ -44,6 +45,7 @@ function generateCards() {
 }
 
 function flipCard() {
+  if (health <= 0) restart();
   if (lockBoard) return;
   if (this === firstCard) return;
 
@@ -55,12 +57,11 @@ function flipCard() {
   }
 
   secondCard = this;
- 
+
   lockBoard = true;
 
   checkForMatch();
 }
-
 function checkForMatch() {
   let isMatch = firstCard.dataset.name === secondCard.dataset.name;
 
@@ -68,8 +69,9 @@ function checkForMatch() {
 }
 
 function disableCards() {
-    score++;
-    document.querySelector(".score").textContent = score;
+  score++;
+  listenscore++;
+  document.querySelector(".score").textContent = score;
   firstCard.removeEventListener("click", flipCard);
   secondCard.removeEventListener("click", flipCard);
   firstCard.classList.remove("flipped");
@@ -83,6 +85,8 @@ function unflipCards() {
   setTimeout(() => {
     firstCard.classList.remove("flipped");
     secondCard.classList.remove("flipped");
+    health--;
+    document.querySelector(".health").textContent = health;
     resetBoard();
   }, 1000);
 }
@@ -97,27 +101,33 @@ function restart() {
   resetBoard();
   shuffleCards();
   score = 0;
+  health = 5;
+  document.querySelector(".health").textContent = health;
+  listenscore = 0;
   document.querySelector(".score").textContent = score;
   gridContainer.innerHTML = "";
   generateCards();
 }
 
 function next() {
-    if(listenscore == cardnumber)
-    {resetBoard();
-        shuffleCards();
-        gridContainer.innerHTML = "";
-        generateCards();}
-    
+  if (listenscore == 9) {
+    resetBoard();
+    shuffleCards();
+    gridContainer.innerHTML = "";
+    generateCards();
+    listenscore = 0;
+    health = 5;
+  }
+
 }
 function flipall() {
-    var cards = document.querySelectorAll('.card');
-cards.forEach(function(card) {
+  var cards = document.querySelectorAll('.card');
+  cards.forEach(function (card) {
     card.classList.add('flipped');
-});
-setTimeout( () => {
-    cards.forEach(function(card) {
-        card.classList.remove('flipped');
+  });
+  setTimeout(() => {
+    cards.forEach(function (card) {
+      card.classList.remove('flipped');
     });
-}, 1000)
+  }, 1000)
 }
