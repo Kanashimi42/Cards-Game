@@ -3,10 +3,15 @@ let cards = [];
 let firstCard, secondCard;
 let lockBoard = false;
 let score = 0;
+let score_2 = 0;
 let health = 5;
+let health_2 = 5;
 let listenscore = 0;
+let player = true;
 document.querySelector(".score").textContent = score;
+document.querySelector(".score2").textContent = score_2;
 document.querySelector(".health").textContent = health;
+document.querySelector(".health2").textContent = health_2;
 fetch("./data/cards.json")
   .then((res) => res.json())
   .then((data) => {
@@ -80,13 +85,14 @@ function disablebutton() {
 }
 }
 function disableCards() {
-  score++;
+ if (player) {score++; player = false} else {score_2++;}
   listenscore++;
   if (listenscore == 9)
   {
     enablebutton();
   }
   document.querySelector(".score").textContent = score;
+  document.querySelector(".score2").textContent = score_2;
   firstCard.removeEventListener("click", flipCard);
   secondCard.removeEventListener("click", flipCard);
   firstCard.classList.remove("flipped");
@@ -100,8 +106,14 @@ function unflipCards() {
   setTimeout(() => {
     firstCard.classList.remove("flipped");
     secondCard.classList.remove("flipped");
-    health--;
+    if (player){
+      health--;
+      player = false;
+    } else {health_2--;
+    player = true;}
+    
     document.querySelector(".health").textContent = health;
+    document.querySelector(".health2").textContent = health_2;
     resetBoard();
   }, 1000);
 }
@@ -116,10 +128,14 @@ function restart() {
   resetBoard();
   shuffleCards();
   score = 0;
+  score_2 = 0;
   health = 5;
+  health_2 = 5;
   document.querySelector(".health").textContent = health;
+  document.querySelector(".health2").textContent = health_2;
   listenscore = 0;
   document.querySelector(".score").textContent = score;
+  document.querySelector(".score2").textContent = score_2;
   gridContainer.innerHTML = "";
   generateCards();
 }
@@ -132,6 +148,7 @@ function next() {
     generateCards();
     listenscore = 0;
     health = 5;
+    health_2 = 5;
     disablebutton();
   }
 

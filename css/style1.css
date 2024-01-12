@@ -21,12 +21,17 @@ p {
     display: flex;
     justify-content: center;
 }
-grayed {
 
-    font-size: 30px;
-    background-color: rgb(121, 121, 121);
-    color: white;
+.disable
+{
+    color: black;
 }
+
+.gray {
+    background-color: gray !important; 
+    color: black !important; 
+}
+
 .actions button {
     padding: 8px 16px;
     font-size: 30px;
@@ -58,6 +63,9 @@ grayed {
 }
 
 .card.flipped {
+    transform: rotateY(180deg);
+}
+.card.check {
     transform: rotateY(180deg);
 }
 .card.matched {
