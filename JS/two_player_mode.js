@@ -6,12 +6,15 @@ let score = 0;
 let score_2 = 0;
 let health = 5;
 let health_2 = 5;
+console.log("Updating healt:", health_2);
 let listenscore = 0;
 let player = true;
+document.querySelector(".scor").textContent = score_2;
+
+document.querySelector(".healt").textContent = health_2;
 document.querySelector(".score").textContent = score;
-document.querySelector(".score2").textContent = score_2;
 document.querySelector(".health").textContent = health;
-document.querySelector(".health2").textContent = health_2;
+
 fetch("./data/cards.json")
   .then((res) => res.json())
   .then((data) => {
@@ -73,26 +76,25 @@ function checkForMatch() {
   isMatch ? disableCards() : unflipCards();
 }
 function enablebutton() {
-  var button = document.querySelector('.gray'); 
+  var button = document.querySelector('.gray');
   if (button) {
     button.classList.remove('gray');
-}
+  }
 }
 function disablebutton() {
-  var button = document.querySelector('.disable'); 
+  var button = document.querySelector('.disable');
   if (button) {
     button.classList.add('gray');
-}
+  }
 }
 function disableCards() {
- if (player) {score++; player = false} else {score_2++;}
+  if (player) { score++; player = false; } else { score_2++; player = true; }
   listenscore++;
-  if (listenscore == 9)
-  {
+  if (listenscore == 9) {
     enablebutton();
   }
   document.querySelector(".score").textContent = score;
-  document.querySelector(".score2").textContent = score_2;
+  document.querySelector(".scor").textContent = score_2;
   firstCard.removeEventListener("click", flipCard);
   secondCard.removeEventListener("click", flipCard);
   firstCard.classList.remove("flipped");
@@ -106,14 +108,16 @@ function unflipCards() {
   setTimeout(() => {
     firstCard.classList.remove("flipped");
     secondCard.classList.remove("flipped");
-    if (player){
+    if (player) {
       health--;
       player = false;
-    } else {health_2--;
-    player = true;}
-    
+    } else {
+      health_2--;
+      player = true;
+    }
+
     document.querySelector(".health").textContent = health;
-    document.querySelector(".health2").textContent = health_2;
+    document.querySelector(".healt").textContent = health_2;
     resetBoard();
   }, 1000);
 }
@@ -132,10 +136,10 @@ function restart() {
   health = 5;
   health_2 = 5;
   document.querySelector(".health").textContent = health;
-  document.querySelector(".health2").textContent = health_2;
+  document.querySelector(".healt").textContent = health_2;
   listenscore = 0;
   document.querySelector(".score").textContent = score;
-  document.querySelector(".score2").textContent = score_2;
+  document.querySelector(".scor").textContent = score_2;
   gridContainer.innerHTML = "";
   generateCards();
 }
