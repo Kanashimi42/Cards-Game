@@ -6,15 +6,19 @@
     <link rel="stylesheet" href="css/style1.css">
   </head>
   <body>
+    
     <h1>Memory Cards</h1>
     <div class="grid-container">
     </div>
     <p>Score: <span class="score"></span>  Health: <span class="health"></span></p>
+    <div class="screen hide"> <h2>You lose!</h2> <p>Score: <span class="score"></span></p> <div class="actions"><button onclick="restart()">Restart</button></div></div>
     <div class="actions">
         <button onclick="restart()">Restart</button>
         <button onclick="flipall()">Show Cards</button>
         <button onclick="next()" class="disable , gray" >Next Row</button>
-    </div>
+        <br>
+        <a href="index.html"><button>Menu</button></a>
+ 
     <script src="JS/one_player_mode.js"></script>
   </body>
 </html>

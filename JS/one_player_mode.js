@@ -3,8 +3,10 @@ let cards = [];
 let firstCard, secondCard;
 let lockBoard = false;
 let score = 0;
-let health = 5;
+let health = 1;
 let listenscore = 0;
+
+var end = document.querySelectorAll('.hide');
 document.querySelector(".score").textContent = score;
 document.querySelector(".health").textContent = health;
 fetch("./data/cards.json")
@@ -45,7 +47,7 @@ function generateCards() {
 }
 
 function flipCard() {
-  if (health <= 0) restart();
+  if (health <= 0) show();
   if (lockBoard) return;
   if (this === firstCard) return;
 
@@ -62,28 +64,30 @@ function flipCard() {
 
   checkForMatch();
 }
+function show() {
+  end.classList.remove('hide');
+}
 function checkForMatch() {
   let isMatch = firstCard.dataset.name === secondCard.dataset.name;
 
   isMatch ? disableCards() : unflipCards();
 }
 function enablebutton() {
-  var button = document.querySelector('.gray'); 
+  var button = document.querySelector('.gray');
   if (button) {
     button.classList.remove('gray');
-}
+  }
 }
 function disablebutton() {
-  var button = document.querySelector('.disable'); 
+  var button = document.querySelector('.disable');
   if (button) {
     button.classList.add('gray');
-}
+  }
 }
 function disableCards() {
   score++;
   listenscore++;
-  if (listenscore == 9)
-  {
+  if (listenscore == 9) {
     enablebutton();
   }
   document.querySelector(".score").textContent = score;
