@@ -35,7 +35,12 @@ function shuffleCards() {
     cards[randomIndex] = temporaryValue;
   }
 }
-
+function show() {
+  document.querySelector(".score_end").textContent = score;
+  document.querySelector(".score_end2").textContent = score_2;
+  var ends = document.querySelector('.hide');
+  ends.classList.remove('hide');
+}
 function generateCards() {
   for (let card of cards) {
     const cardElement = document.createElement("div");
@@ -53,7 +58,7 @@ function generateCards() {
 }
 
 function flipCard() {
-  if (health <= 0) restart();
+  if (health <= 0) show();
   if (lockBoard) return;
   if (this === firstCard) return;
 
@@ -142,6 +147,8 @@ function restart() {
   document.querySelector(".scor").textContent = score_2;
   gridContainer.innerHTML = "";
   generateCards();
+  var ends = document.querySelector('.screen');
+  ends.classList.add('hide');
 }
 
 function next() {

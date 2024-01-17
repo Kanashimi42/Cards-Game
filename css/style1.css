@@ -65,6 +65,9 @@ p {
 .card.flipped {
     transform: rotateY(180deg);
 }
+.card.flipped_a {
+    transform: rotateY(180deg);
+}
 .card.check {
     transform: rotateY(180deg);
 }

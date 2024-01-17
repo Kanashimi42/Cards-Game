@@ -6,6 +6,14 @@
     <link rel="stylesheet" href="css/style1.css">
   </head>
   <body>
+    <audio autoplay="autoplay" id="myaudio">
+      <source src="Contents/science-documentary-169621.mp3" />     
+  </audio>
+  <script>
+    var audio = document.getElementById("myaudio");
+    audio.volume = 0.1;
+  </script>
+    <div class="screen hide"> <h2>END!</h2> <p>Score: <span class="score_end"></span></p> <p>Score2: <span class="score_end2"></span></p> <div class="actions"><button onclick="restart()">Restart</button></div></div>
     <h1>Memory Cards</h1>
     <div class="grid-container">
     </div>
